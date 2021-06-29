@@ -33,6 +33,9 @@ public class UserServiceTest extends PowerMockTestCase {
             final User user = new User();
             PowerMockito.mockStatic(UserDao.class);
             PowerMockito.doNothing().when(UserDao.class);       //无返回值的不指定方法
+            // 可以使用when(Class<T>, String, Object...)的方式对每个方法的行为进行指定，上面的方法可能并不起作用。
+            PowerMockito.doNothing().when(UserDao.class);       //无返回值的不指定方法
+            PowerMockito.doNothing().when(UserDao.class);       //无返回值的不指定方法
             final UserService userService = new UserService();
             userService.saveUser(user);
             // FIXME verify方法中必须是mock对象，否则虽然此UT通过，但是afterxxx方法出错，还影像其它的Mock测试
